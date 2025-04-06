@@ -16,25 +16,25 @@ export default function Page() {
   };
 
   return (
-    <main className="p-8 font-sans">
-      <h1 className="text-3xl font-bold mb-4">Improving Delivery Promise Reliability at Maersk</h1>
-      <div className="mb-4 space-x-2">
+    <main className="p-8 font-sans max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold mb-6">Improving Delivery Promise Reliability at Maersk</h1>
+      <div className="mb-6 space-x-2">
         {Object.keys(tabs).map((key) => (
           <button
             key={key}
             onClick={() => setTab(key)}
-            className={`px-4 py-2 rounded ${tab === key ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium shadow-sm transition ${
+              tab === key ? 'bg-blue-600 text-white' : 'bg-gray-200'
+            }`}
           >
             {key.charAt(0).toUpperCase() + key.slice(1)}
           </button>
         ))}
       </div>
-      <div className="bg-white p-4 rounded shadow-md">
+      <div className="bg-white p-6 rounded-lg shadow">
         {Array.isArray(tabs[tab]) ? (
-          <ul className="list-disc pl-5 space-y-1">
-            {tabs[tab].map((item, idx) => (
-              <li key={idx}>{item}</li>
-            ))}
+          <ul className="list-disc pl-5 space-y-2">
+            {tabs[tab].map((item, idx) => <li key={idx}>{item}</li>)}
           </ul>
         ) : (
           <p>{tabs[tab]}</p>
@@ -42,13 +42,13 @@ export default function Page() {
       </div>
       {tab === 'artifacts' && (
         <div className="mt-6">
-          <h2 className="font-semibold mb-2">Wireframe Preview</h2>
+          <h2 className="text-xl font-semibold mb-2">Wireframe Preview</h2>
           <Image src="/wireframe.png" alt="Wireframe" width={800} height={500} />
         </div>
       )}
       {tab === 'dashboards' && (
         <div className="mt-6">
-          <h2 className="font-semibold mb-2">Monitoring Dashboard</h2>
+          <h2 className="text-xl font-semibold mb-2">Monitoring Dashboard</h2>
           <Image src="/dashboard.png" alt="Monitoring Dashboard" width={800} height={500} />
         </div>
       )}
