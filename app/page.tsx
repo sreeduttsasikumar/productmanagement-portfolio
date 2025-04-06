@@ -1,12 +1,13 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import ProblemTab from './components/ProblemTab';
 
 export default function Page() {
   const [tab, setTab] = useState('problem');
 
   const tabs = {
-    problem: 'Maersk faced growing dissatisfaction due to inconsistent delivery timelines. Delivery Promise Success was at 65%, with 1% failure costing ~$1.5M.',
+    problem: '',
     goal: ['Improve Delivery Promise Success to 77.5%', 'Improve schedule reliability to 97%', 'Reduce operational costs by $26M USD', 'Drive CSAT from 6 to 7.5+', 'Reduce 15 FTEs via automation'],
     steps: ['Data Collection: Schedule Logs, PMPH vs SOC from 40+ terminals', 'Analysis: 20% of delivery failures tied to flawed vessel planning', 'Design: Wireframes and dashboards', 'Development: Real-time predictive analytics system', 'Adoption: Early engagement, KPI alignment, training sessions'],
     artifacts: ['Dashboards (Power BI)', 'Wireframes (Figma): Capacity Forecast View', 'Python Forecasting Model', 'Process Maps (As-Is vs To-Be)'],
@@ -31,8 +32,11 @@ export default function Page() {
           </button>
         ))}
       </div>
+
       <div className="bg-white p-6 rounded-lg shadow">
-        {Array.isArray(tabs[tab]) ? (
+        {tab === 'problem' ? (
+          <ProblemTab />
+        ) : Array.isArray(tabs[tab]) ? (
           <ul className="list-disc pl-5 space-y-2">
             {tabs[tab].map((item, idx) => <li key={idx}>{item}</li>)}
           </ul>
@@ -40,6 +44,7 @@ export default function Page() {
           <p>{tabs[tab]}</p>
         )}
       </div>
+
       {tab === 'artifacts' && (
         <div className="mt-6">
           <h2 className="text-xl font-semibold mb-2">Wireframe Preview</h2>
