@@ -1,9 +1,10 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Maersk Portfolio",
-  description: "Use case portfolio of delivery optimization at Maersk",
+  title: "Sreedutt Sasikumar – Product Management Portfolio",
+  description: "A showcase of product management use cases and achievements by Sreedutt Sasikumar.",
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
